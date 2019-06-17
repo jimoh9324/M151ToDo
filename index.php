@@ -14,6 +14,10 @@
     <div class='container'>
         <h1>ToDo Verwaltung</h1>
         <p>Willkommen zur ToDo Verwaltung. Um die Applikation nutzen zu können, registrieren Sie sich bitte. Falls sie bereits einen Account haben, melden Sie sich bitte an.</p>
+
+        <!-- Buttons mit weiterleitung auf entsprechende Files -->
+        <a class="btn btn-primary" href="register.php" role="button">Registrieren</a>
+        <a class="btn btn-primary" href="login.php" role="button">Anmelden</a>
     </div>
 
 
