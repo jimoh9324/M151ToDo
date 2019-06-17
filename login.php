@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 
 				if(isset($_SESSION['loggedin']))
 				{
-					header('Location: SW05admin.php');
+					header('Location: todo.php');
 				}
 			}
 			// TODO wenn Passwort falsch, oder kein Benutzer mit diesem Benutzernamem in DB: $error .= "Benutzername oder Passwort sind falsch";$
