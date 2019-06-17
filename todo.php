@@ -1,3 +1,36 @@
+<?php
+    // TODO: Verbindung zur Datenbank einbinden
+    include('dbconnector.inc.php');
+
+    //Session wird gestartet
+    session_start();
+    session_regenerate_id(true);
+
+    $error = $message = '';
+
+    //Session überprüfen
+    if(isset($_SESSION['loggedin']))
+    {
+     $message .= "Hallo " . $_SESSION['username'] . ", du bist angemeldet.";
+    }
+
+    else
+    {
+        $error .= "Sie sin nicht angemeldet, bitte melden Sie sich auf der <a href='SW05login.php'>Login-Seite</a> an.";
+    }
+
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +44,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <div class='container'>
+    <h1>ToDo Übersicht</h1>
 
+    <?php
+        if(!empty($error))
+        {
+            echo $error;
+            echo '</br>';
+        }
+
+        else
+        {
+            echo $message;
+            echo '</br>';
+        }
+    ?>
+    </div>
 
 
 
