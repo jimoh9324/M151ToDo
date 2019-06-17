@@ -1,7 +1,7 @@
 <?php
 
 //Verbindung zur Datenbank einbinden
-include('SW05dbconnector.inc.php');
+include('dbconnector.inc.php');
 
 // Initialisierung
 $error = $message =  '';

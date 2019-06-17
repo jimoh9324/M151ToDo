@@ -1,7 +1,7 @@
 <?php
 
 // TODO: Verbindung zur Datenbank einbinden
-include('SW05dbconnector.inc.php');
+include('dbconnector.inc.php');
 
 //Session wird gestartet
 session_start();
