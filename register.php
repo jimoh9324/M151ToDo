@@ -1,8 +1,6 @@
 <?php
 
-//PW LINE 74
-
-// TODO: Verbindung zur Datenbank einbinden
+//Verbindung zur Datenbank einbinden
 include('SW05dbconnector.inc.php');
 
 // Initialisierung
@@ -107,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $mysqli->close();
 
     // TODO: Weiterleitung auf login.php
-    header('Location: SW05login.php');
+    header('Location: login.php');
   }
 }
 
