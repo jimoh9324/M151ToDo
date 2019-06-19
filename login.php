@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 	if(!empty(trim($_POST['username']))){
 
 		$username = trim($_POST['username']);
-		
+
 		// prüfung benutzername
 		if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{6,}/", $username) || strlen($username) > 30){
 			$error .= "Der Benutzername entspricht nicht dem geforderten Format.<br />";
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 	} else {
 		$error .= "Geben Sie bitte das Passwort an.<br />";
 	}
-	
+
 	// kein fehler
 	if(empty($error)){
 
@@ -63,11 +63,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 
 		// TODO Passwort auslesen und mit dem eingegeben Passwort vergleichen
 		$result = $stmt->get_result();
-		if($result->num_rows) 
+		if($result->num_rows)
 		{
 			$row = $result->fetch_assoc();
-		
-		// TODO wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt"; 
+
+		// TODO wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt";
 
 			if(password_verify($password, $row['password']))
 
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 			else
 			{
 				$error .= "Benutzername oder Passwort sind falsch";
-			} 
+			}
 		}
 		else
 		{
@@ -159,4 +159,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>
 </html>
-
