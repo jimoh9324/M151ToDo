@@ -1,7 +1,7 @@
 <?php
     $host = 'localhost';
     $username = 'todouser';
-    $password = 'To151DoHellerMeyer';
+    $password = '4TcKZm8ZDm$WuHcAX?9^x';
     $database = '151todolist';
 
     $mysqli = new mysqli($host, $username, $password, $database);

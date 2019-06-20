@@ -60,7 +60,11 @@
             echo '</br>';
         }
     ?>
+
+        <a class="btn btn-primary" href="loggout.php" role="button">Loggout</a>
+
     </div>
+
 
 
 
