@@ -20,6 +20,28 @@
         $error .= "Sie sind nicht angemeldet, bitte melden Sie sich auf der <a href='SW05login.php'>Login-Seite</a> an.";
     }
 
+    //überprüft ob Daten per Post gesendet worden sind
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        //gibt den $_POST Array aus
+        //Zur Überprüfung bis die Übermittlung an die DB klappt
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+
+        //task vorhanden, mindestens 1 Zeichen und maximal 100 Zeichen lang
+        if(isset($_POST['task']) && !empty(trim($_POST['task'])) && strlen(trim($_POST['task'])) <= 100)
+        {
+            // Spezielle Zeichen Escapen > Script Injection verhindern
+            $task = htmlspecialchars(trim($_POST['task']));
+        } 
+        else 
+        {
+            //Fehlermeldung wird in Variabel geschrieben
+            $error .= "Die eingegebenen Informationen im Feld Task entsprechen nicht dem geforderten Format.<br />";
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
