@@ -47,12 +47,47 @@
 
         <form action="" method="post">
             <!-- Task -->
-            <div class="from-group">
+            <div class="form-group">
                 <label for="task" >Task *</label>
                 <input type="text" name="task" class="form-control" id="firstname"
                     value="<?php echo $task ?>"
                     placeholder="Beschreiben Sie ihren Task"
                     required="true">
+            </div>
+
+
+            <!-- Target -->
+            <div class="form-group">
+            <label for="target" >Zu erledigen bis *</label>
+            <input type="date" name="target" class="form-control" id="target"
+                value="<?php echo $target ?>"
+                required="true">
+            </div>
+
+
+            <!-- Priority -->
+            <div class="form-group">
+            <label for="priority" >Wichtigkeit (1 = sehr wichtig, 5 = nicht so wichtig) *</label>
+                <select name="priority" class="form-control" id="priority"
+                    value="<?php echo $priority ?>"
+                    required="true">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+
+            <!-- Status -->
+            <div class="form-group">
+            <label for="status" >Status *</label>
+            <select name="status" class="form-control" id="status"
+                value="<?php echo $status ?>"
+                required="true">
+                <option>Aktiv</option>
+                <option>Erledigt</option>
             </div>
 
 
