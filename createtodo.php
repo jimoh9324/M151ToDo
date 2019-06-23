@@ -83,18 +83,18 @@
             <!-- Status -->
             <div class="form-group">
             <label for="status" >Status *</label>
-            <select name="status" class="form-control" id="status"
-                value="<?php echo $status ?>"
-                required="true">
-                <option>Aktiv</option>
-                <option>Erledigt</option>
+                <select name="status" class="form-control" id="status"
+                    value="<?php echo $status ?>"
+                    required="true">
+                    <option>Aktiv</option>
+                    <option>Erledigt</option>
+                </select>
             </div>
-
+            <button type="submit" name="button" value="submit" class="btn btn-info">Senden</button>
+            <button type="reset" name="button" value="reset" class="btn btn-warning">Leeren</button>
+            <a class="btn btn-warning" href="todo.php" role="button">Abbrechen</a> 
 
         </form>
-
-        <a class="btn btn-primary" href="todo.php" role="button">Abbrechen</a> 
-
     </div>
 
 
