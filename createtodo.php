@@ -10,7 +10,9 @@
     session_start();
     session_regenerate_id(true);
 
+    //Initialisierung der Variablen
     $error = $message = '';
+    $task = $target = $priority = $status = '';
 
     //Session überprüfen
     if(!isset($_SESSION['loggedin']))
@@ -33,15 +35,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <div class='container'>
-    <h1>ToDo erstellen</h1>
+        <h1>ToDo erstellen</h1>
 
-    <?php
-        if(!empty($error))
-        {
-            echo $error;
-            echo '</br>';
-        }
-    ?>
+        <?php
+            if(!empty($error))
+            {
+                echo $error;
+                echo '</br>';
+            }
+        ?>
+
+        <form action="" method="post">
+            <!-- Task -->
+            <div class="from-group">
+                <label for="task" >Task *</label>
+                <input type="text" name="task" class="form-control" id="firstname"
+                    value="<?php echo $task ?>"
+                    placeholder="Beschreiben Sie ihren Task"
+                    required="true">
+            </div>
+
+
+        </form>
 
         <a class="btn btn-primary" href="todo.php" role="button">Abbrechen</a> 
 
