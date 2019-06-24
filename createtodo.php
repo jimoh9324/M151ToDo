@@ -24,11 +24,6 @@
     //überprüft ob Daten per Post gesendet worden sind
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        //gibt den $_POST Array aus
-        //Zur Überprüfung bis die Übermittlung an die DB klappt
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
 
         //Serverseitige Validierung Task
         //task vorhanden, mindestens 1 Zeichen und maximal 100 Zeichen lang
