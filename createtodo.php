@@ -18,7 +18,9 @@
     //Session überprüfen
     if(!isset($_SESSION['loggedin']))
     {
+        //Error Message wird nicht angezeigt, da weiterleitung auf login.php direkt erfolgt. So kann ein unautorisierter Benutzer die Seite gar nicht erst sehen.
         $error .= "Sie sind nicht angemeldet, bitte melden Sie sich auf der <a href='SW05login.php'>Login-Seite</a> an.";
+        header('Location: login.php');
     }
 
     //überprüft ob Daten per Post gesendet worden sind
