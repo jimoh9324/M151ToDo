@@ -88,6 +88,20 @@
                 <td>@mdo</td>
                 <td>Offen</td>
                 </tr>
+
+
+                <tr>
+                <?php
+                    //Alle Todos für den jeweiligen Benutzer holen
+                    $query = "SELECT * FROM todo";
+                    $todos = $mysqli->query($query);
+
+                    while($row = $todos->fetch_assoc())
+                    {
+                        echo "<tr><td>".$row["todoid"]."</td><td>".$row['task']."</td><td>".$row['target']."</td><td>".$row['priority']."</td><td>".$row['status']."</td></tr>";
+                    }
+                ?>
+                </tr>
             </tbody>
         </table>
 
