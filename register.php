@@ -71,25 +71,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   // wenn kein Fehler vorhanden ist, schreiben der Daten in die Datenbank
   if(empty($error)){
 
-    //PW HASHEN
+    //Passwort wird gehasht
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    // TODO: INPUT Query erstellen, welches firstname, lastname, username, password, email in die Datenbank schreibt
+    //INPUT Query erstellen, welches firstname, lastname, username, password, email in die Datenbank schreibt
     $query='INSERT INTO users (firstname, lastname, username, password, email) VALUES (?, ?, ?, ?, ?)';
-    // TODO: Query vorbereiten mit prepare();
+    //Query vorbereiten mit prepare();
     $stmt = $mysqli->prepare($query);
     if($stmt===false)
     {
       $error .= 'prepare failed ' . $mysqli->error . '<br />';
     }
 
-    // TODO: Parameter an Query binden mit bind_param();
+    //Parameter an Query binden mit bind_param();
     if(!$stmt->bind_param('sssss', $firstname, $lastname, $username, $password, $email))
     {
       $error .= 'bind failed '. $mysqli->error . '<br />';
     }
 
-    // TODO: Query ausführen mit execute();
+    //Query ausführen mit execute();
     if(!$stmt->execute())
     {
       $error .= 'execute failed '. $mysqli->error . '<br />';
@@ -101,10 +101,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
       $message .= "Die Daten wurden erfolgreich in die Datenbank geschrieben.<br />";
     }
 
-    // TODO: Verbindung schliessen
+    //Verbindung schliessen
     $mysqli->close();
 
-    // TODO: Weiterleitung auf login.php
+    //Weiterleitung auf login.php
     header('Location: login.php');
   }
 }
