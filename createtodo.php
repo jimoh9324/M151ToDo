@@ -117,8 +117,8 @@
             //Verbindung schliessen
             $mysqli->close();
 
-            //Weiterleitung auf login.php
-            //header('Location: todo.php');
+            //Weiterleitung auf todo.php.
+            header('Location: todo.php');
 
         }
     }
