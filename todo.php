@@ -52,21 +52,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <div class='container'>
-    <h1>ToDo Übersicht</h1>
+        <h1>ToDo Übersicht</h1>
 
-    <?php
-        if(!empty($error))
-        {
-            echo $error;
-            echo '</br>';
-        }
+        <?php
+            if(!empty($error))
+            {
+                echo $error;
+                echo '</br>';
+            }
 
-        else
-        {
-            echo $message;
-            echo '</br>';
-        }
-    ?>
+            else
+            {
+                echo $message;
+                echo '</br>';
+            }
+        ?>
+
+        <!-- Tabelle für die ToDos -->
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Task</th>
+                <th scope="col">Zu erledigen bis</th>
+                <th scope="col">Wichtigkeit</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Offen</td>
+                </tr>
+            </tbody>
+        </table>
 
         <a class="btn btn-primary" href="createtodo.php" role="button">To Do erstellen</a> 
         <a class="btn btn-primary" href="loggout.php" role="button">Loggout</a>
