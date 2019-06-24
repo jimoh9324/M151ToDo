@@ -92,7 +92,8 @@
             </tbody>
         </table>
 
-        <a class="btn btn-primary" href="createtodo.php" role="button">To Do erstellen</a> 
+        <a class="btn btn-primary" href="createtodo.php" role="button">To Do erstellen</a>
+        <a class="btn btn-primary" href="admin.php" role="button">Passwort ändern</a>  
         <a class="btn btn-warning" href="loggout.php" role="button">Loggout</a>
 
     </div>
