@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 
 				//Username und Logged in Status werden in die Session geschrieben
 				$_SESSION['username'] = $row['username'];
+				$_SESSION['userid'] = $row['userid']
 				$_SESSION['loggedin'] = true;
 
 				if(isset($_SESSION['loggedin']))
