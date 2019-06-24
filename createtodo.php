@@ -12,7 +12,7 @@
 
     //Initialisierung der Variablen
     $error = $message = '';
-    $task = $target = $priority = $status = '';
+    $task = $userid = $target = $priority = $status = '';
 
     //Session überprüfen
     if(!isset($_SESSION['loggedin']))
@@ -86,6 +86,45 @@
             $error .= "Die eingegebenen Informationen im Feld Status entsprechen nicht dem geforderten Format.<br />";
         }
 
+
+
+
+        if(empty($error))
+        {
+            //INPUT Query erstellen, welches task, target, priority, status in die Datenbank schreibt
+            $query='INSERT INTO todo (task, userid, target, priority, status) VALUES (?, ?, ?, ?)';
+            //Query vorbereiten mit prepare();
+            $stmt = $mysqli->prepare($query);
+            if($stmt===false)
+            {
+                $error .= 'prepare failed ' . $mysqli->error . '<br />';
+            }
+
+            //Parameter an Query binden mit bind_param();
+            if(!$stmt->bind_param('sisis', $task, $userid, $target, $priority, $status))
+            {
+                $error .= 'bind failed '. $mysqli->error . '<br />';
+            }
+
+            //Query ausführen mit execute();
+            if(!$stmt->execute())
+            {
+                $error .= 'execute failed '. $mysqli->error . '<br />';
+            }
+
+            //Keine Fehler
+            if(empty($error))
+            {
+                $message .= "Die Daten wurden erfolgreich in die Datenbank geschrieben.<br />";
+            }
+
+            //Verbindung schliessen
+            $mysqli->close();
+
+            //Weiterleitung auf login.php
+            //header('Location: todo.php');
+
+        }
     }
 
 ?>

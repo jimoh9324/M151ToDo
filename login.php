@@ -40,43 +40,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 	// kein fehler
 	if(empty($error)){
 
-		// TODO SELECT Query erstellen, user und passwort mit Datenbank vergleichen
+		//SELECT Query erstellen, user und passwort mit Datenbank vergleichen
 		$query = 'SELECT username, password FROM users WHERE username = ?';
-		// TODO prepare()
+		//prepare()
 		$stmt = $mysqli->prepare($query);
 		if($stmt==false)
 		{
 			$error .= 'prepare query failed'. $mysqli->error . '<br />';
 		}
 
-		// TODO bind_param()
+		//bind_param()
 		if(!$stmt->bind_param("s", $username))
 		{
 			$error .= 'bind param failed'.$mysqli->error . '<br />';
 		}
 
-		// TODO execute()
+		//execute()
 		if(!$stmt->execute())
 		{
 			$error .= 'execute failed'.$mysqli->error . '<br />';
 		}
 
-		// TODO Passwort auslesen und mit dem eingegeben Passwort vergleichen
+		//Passwort auslesen und mit dem eingegeben Passwort vergleichen
 		$result = $stmt->get_result();
 		if($result->num_rows)
 		{
 			$row = $result->fetch_assoc();
 
-		// TODO wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt";
+			//wenn Passwort korrekt:  $message .= "Sie sind nun eingeloggt";
 
 			if(password_verify($password, $row['password']))
 
 			{
+				//Prepared Statement für das Auslesen der UserID aus der Datenbank
+				$queryid = 'SELECT userid FROM users WHERE username = ?';
+
+				//prepare()
+				$stmt = $mysqli->prepare($queryid);
+				if($stmt==false)
+				{
+					$error .= 'prepare query failed'. $mysqli->error . '<br />';
+				}
+
+				//bind_param()
+				if(!$stmt->bind_param("s", $username))
+				{
+					$error .= 'bind param failed'.$mysqli->error . '<br />';
+				}
+
+				//execute()
+				if(!$stmt->execute())
+				{
+					$error .= 'execute failed'.$mysqli->error . '<br />';
+				}
+
+				$result = $stmt->get_result();
+				if($result->num_rows)
+					{
+						$userid = $result->fetch_assoc();
+					}
+
+
 				$message .= "Sie sind nun eingeloggt";
 
 				//Username und Logged in Status werden in die Session geschrieben
 				$_SESSION['username'] = $row['username'];
-				$_SESSION['userid'] = $row['userid']
+				$_SESSION['userid'] = $userid['userid'];
 				$_SESSION['loggedin'] = true;
 
 				if(isset($_SESSION['loggedin']))
