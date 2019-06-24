@@ -12,7 +12,8 @@
 
     //Initialisierung der Variablen
     $error = $message = '';
-    $task = $userid = $target = $priority = $status = '';
+    $task = $target = $priority = $status = '';
+    $userid = $_SESSION['userid'];
 
     //Session überprüfen
     if(!isset($_SESSION['loggedin']))
@@ -92,7 +93,7 @@
         if(empty($error))
         {
             //INPUT Query erstellen, welches task, target, priority, status in die Datenbank schreibt
-            $query='INSERT INTO todo (task, userid, target, priority, status) VALUES (?, ?, ?, ?)';
+            $query='INSERT INTO todo (task, userid, target, priority, status) VALUES (?, ?, ?, ?, ?)';
             //Query vorbereiten mit prepare();
             $stmt = $mysqli->prepare($query);
             if($stmt===false)
