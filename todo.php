@@ -19,6 +19,7 @@
     if(isset($_SESSION['loggedin']))
     {
      $message .= "Hallo " . $_SESSION['username'] . ", du bist angemeldet.";
+     print_r ($_SESSION);
     }
 
     else
