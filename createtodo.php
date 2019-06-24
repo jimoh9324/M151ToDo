@@ -29,6 +29,7 @@
         print_r($_POST);
         echo "</pre>";
 
+        //Serverseitige Validierung Task
         //task vorhanden, mindestens 1 Zeichen und maximal 100 Zeichen lang
         if(isset($_POST['task']) && !empty(trim($_POST['task'])) && strlen(trim($_POST['task'])) <= 100)
         {
@@ -40,6 +41,51 @@
             //Fehlermeldung wird in Variabel geschrieben
             $error .= "Die eingegebenen Informationen im Feld Task entsprechen nicht dem geforderten Format.<br />";
         }
+
+
+        //TODO: DATUM RICHTIGES FORMAT???
+        //Serverseitige Validierung Target
+        //target vorhanden, mindestens 1 Zeichen lang
+        if(isset($_POST['target']) && !empty(trim($_POST['target'])))
+        {
+            // Spezielle Zeichen Escapen > Script Injection verhindern
+            $target = htmlspecialchars(trim($_POST['target']));
+        } 
+        else 
+        {
+            //Fehlermeldung wird in Variabel geschrieben
+            $error .= "Die eingegebenen Informationen im Feld Zu erledigen bis entsprechen nicht dem geforderten Format.<br />";
+        }
+
+
+        //Serverseitige Validierung Priotity
+        //Priotity vorhanden, genau 1 Zeichen lang
+        if(isset($_POST['priority']) && !empty(trim($_POST['priority'])) && (preg_match('/^\d{1}$/', $_POST['priority'])))
+        {
+            // Spezielle Zeichen Escapen > Script Injection verhindern
+            $priority = htmlspecialchars(trim($_POST['priority']));
+        } 
+        else 
+        {
+            //Fehlermeldung wird in Variabel geschrieben
+            $error .= "Die eingegebenen Informationen im Feld Wichtigkeit entsprechen nicht dem geforderten Format.<br />";
+        }
+
+
+        //TODO: NUR EINE DER BEIDEN OPTIONEN AUS DER DROPDOWN SOLL AKZEPTIERT WERDEN
+        //Serverseitige Validierung Status
+        //Priotity vorhanden, genau 1 Zeichen lang
+        if(isset($_POST['status']) && !empty(trim($_POST['status'])))
+        {
+            // Spezielle Zeichen Escapen > Script Injection verhindern
+            $status = htmlspecialchars(trim($_POST['status']));
+        } 
+        else 
+        {
+            //Fehlermeldung wird in Variabel geschrieben
+            $error .= "Die eingegebenen Informationen im Feld Status entsprechen nicht dem geforderten Format.<br />";
+        }
+
     }
 
 ?>
