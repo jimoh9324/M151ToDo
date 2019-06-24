@@ -81,19 +81,15 @@
             </thead>
 
             <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Offen</td>
-                </tr>
-
 
                 <tr>
                 <?php
+
+                    //Userid in normale Variabel
+                    $userid = $_SESSION['userid'];
+
                     //Alle Todos für den jeweiligen Benutzer holen
-                    $query = "SELECT * FROM todo";
+                    $query = "SELECT * FROM todo WHERE userid = $userid";
                     $todos = $mysqli->query($query);
 
                     while($row = $todos->fetch_assoc())
