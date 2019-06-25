@@ -9,10 +9,6 @@ $firstname = $lastname = $email = $username = '';
 
 // Wurden Daten mit "POST" gesendet?
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  // Ausgabe des gesamten $_POST Arrays
-  echo "<pre>";
-  print_r($_POST);
-  echo "</pre>";
 
   // vorname vorhanden, mindestens 1 Zeichen und maximal 30 Zeichen lang
   if(isset($_POST['firstname']) && !empty(trim($_POST['firstname'])) && strlen(trim($_POST['firstname'])) <= 30){
@@ -65,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }
   } else {
     // Ausgabe Fehlermeldung
-    $error .= "Geben Sie bitte einen korrekten Nachnamen ein.<br />";
+    $error .= "Geben Sie bitte ein korrektes Passwort ein.<br />";
   }
 
   // wenn kein Fehler vorhanden ist, schreiben der Daten in die Datenbank
