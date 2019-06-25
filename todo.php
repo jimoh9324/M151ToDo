@@ -3,7 +3,7 @@
 //ToDo for this file:
     //
     //Loggout und Create To Do Button sollen nicht sichtbar sein, wenn man nicht eineloggt ist (es soll nur der Link auf die Login Seite sichtbar sein)
-    //Aus der DB sollen alle ToDos für diesen Benutzer herausgelesen und angezeigt werden       
+    //Aus der DB sollen alle ToDos für diesen Benutzer herausgelesen und angezeigt werden
 
 
     // TODO: Verbindung zur Datenbank einbinden
@@ -93,8 +93,8 @@
         </table>
 
         <a class="btn btn-primary" href="createtodo.php" role="button">To Do erstellen</a>
-        <a class="btn btn-primary" href="admin.php" role="button">Passwort ändern</a>  
-        <a class="btn btn-warning" href="loggout.php" role="button">Loggout</a>
+        <a class="btn btn-primary" href="admin.php" role="button">Passwort ändern</a>
+        <a class="btn btn-warning" href="loggout.php" role="button">Logout</a>
 
     </div>
 
