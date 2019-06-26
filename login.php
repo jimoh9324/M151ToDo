@@ -181,6 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 				</div>
 		  		<button type="submit" name="button" value="submit" class="btn btn-info">Senden</button>
 		  		<button type="reset" name="button" value="reset" class="btn btn-warning">Löschen</button>
+				<a class="btn btn-primary" href="register.php" role="button">Ich habe noch keinen Account</a>
 			</form>
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
