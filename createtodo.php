@@ -1,9 +1,5 @@
  <?php
-    //To Dos for this file:
-        //Durch VALIDIERTE Felder sollen die Spalten der DB befüllt werden
-        //File soll nur zugänglich sein wenn man eingeloggt ist
-        //  
-
+  
     include('dbconnector.inc.php');
 
     //Session wird gestartet
@@ -41,7 +37,6 @@
         }
 
 
-        //TODO: DATUM RICHTIGES FORMAT???
         //Serverseitige Validierung Target
         //target vorhanden, mindestens 1 Zeichen lang
         if(isset($_POST['target']) && !empty(trim($_POST['target'])))
@@ -70,7 +65,6 @@
         }
 
 
-        //TODO: NUR EINE DER BEIDEN OPTIONEN AUS DER DROPDOWN SOLL AKZEPTIERT WERDEN
         //Serverseitige Validierung Status
         //Priotity vorhanden, genau 1 Zeichen lang
         if(isset($_POST['status']) && !empty(trim($_POST['status'])))
