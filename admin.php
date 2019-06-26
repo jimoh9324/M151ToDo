@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
         include('dbconnector.inc.php');
 
         //Session wird gestartet
@@ -19,8 +20,15 @@
             $error .= "Sie sind nicht angemeldet, bitte melden Sie sich auf der <a href='SW05login.php'>Login-Seite</a> an.";
             header('Location: login.php');
         }
+=======
+  include('dbconnector.inc.php');
+>>>>>>> c513a47683b06ee9b489f0c6c4a3ef5ca4e5e39b
 
+  //Session wird gestartet
+  session_start();
+  session_regenerate_id(true);
 
+<<<<<<< HEAD
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
 
@@ -68,6 +76,52 @@
                 }
             }
         }
+=======
+
+if ($_POST) {
+  $oldpassword = $_POST['oldpassword'];
+  $newpassword = $_POST['newpassword'];
+
+
+
+  $userid = $_SESSION['userid'];
+
+  // SELECT Query erstellen, email und passwort mit Datenbank vergleichen
+  $query = 'SELECT * FROM users WHERE userid=? LIMIT 1';
+  // prepare()
+  $stmt = $mysqli->prepare($query);
+  // bind_param()
+  $stmt->bind_param('s', $userid);
+  // execute()
+  $stmt->execute();
+  // Passwort auslesen und mit dem eingegeben Passwort vergleichen
+  $result = $stmt->get_result();
+
+  $row = $result->fetch_assoc();
+
+  if (password_verify($oldpassword, $row['password'])) {
+      if (isset($_POST['newpassword']) && !empty(trim($_POST['newpassword']))) {
+          $password = trim($_POST['oldpassword']);
+          $newpassword = $_POST['newpassword'];
+          //entspricht das passwort unseren vorgaben? (minimal 8 Zeichen, Zahlen, Buchstaben, keine Zeilenumbrüche, mindestens ein Gross- und ein Kleinbuchstabe)
+          if (!preg_match("/(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $newpassword)) {
+              $error .= "Passwort: Mindestlänge 8, min. 1 Gross- und Kleinbuchstabe, Zahl und ein Sonderzeichen";
+          } else {
+              $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
+              $query = 'UPDATE `users` SET `password` = ? WHERE `userid` = ?';
+              $stmt = $mysqli->prepare($query);
+              $stmt->bind_param('si', $newpassword, $row['userid']);
+              $stmt->execute();
+              $message = "Passwort erfolgreich geändert!";
+          }
+      } else {
+          $error = "das Kennwort ist falsch";
+      }
+  } 
+}
+
+?>
+>>>>>>> c513a47683b06ee9b489f0c6c4a3ef5ca4e5e39b
 ?>
 
 
@@ -128,6 +182,7 @@
         </div>
         <button type="submit" name="button" value="submit" class="btn btn-info">Passwort ändern</button>
         <button type="reset" name="button" value="reset" class="btn btn-warning">Leeren</button>
+        <a class="btn btn-warning" href="todo.php" role="button">Zurück</a>
       </form>
     </div>
 
