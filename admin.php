@@ -4,16 +4,16 @@
         //Session wird gestartet
         session_start();
         session_regenerate_id(true);
-    
+
         $error = $message = '';
         $userid = $_SESSION['userid'];
-    
+
         //Session überprüfen
         if(isset($_SESSION['loggedin']))
         {
          $message .= "Hallo " . $_SESSION['username'] . ", du bist angemeldet.";
         }
-    
+
         else
         {
             $error .= "Sie sind nicht angemeldet, bitte melden Sie sich auf der <a href='SW05login.php'>Login-Seite</a> an.";
@@ -35,7 +35,7 @@
                     $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
                 }
             }
-            
+
             //Validierung Neues Passwort
             // passwort vorhanden, mindestens 8 Zeichen
             if(isset($_POST['new']) && !empty(trim($_POST['new'])))
@@ -47,7 +47,7 @@
                     $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
                 }
             }
-            
+
 
             // kein fehler
             if(empty($error))
@@ -61,12 +61,12 @@
                 {
                     mysqli_query($mysqli, "UPDATE users set password='" . $newpassword . "' WHERE userid='" . $_SESSION["userid"] . "'");
                     $message = "Passwort erfolgreich geändert";
-                } 
+                }
                 else
                 {
                     $error = "Das aktuelle Passwort stimmt nicht";
-                }                    
-            }   
+                }
+            }
         }
 ?>
 
@@ -137,5 +137,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>
-
-
