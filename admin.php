@@ -1,82 +1,10 @@
 <?php
-<<<<<<< HEAD
-        include('dbconnector.inc.php');
-
-        //Session wird gestartet
-        session_start();
-        session_regenerate_id(true);
-
-        $error = $message = '';
-        $userid = $_SESSION['userid'];
-
-        //Session überprüfen
-        if(isset($_SESSION['loggedin']))
-        {
-         $message .= "Hallo " . $_SESSION['username'] . ", du bist angemeldet.";
-        }
-
-        else
-        {
-            $error .= "Sie sind nicht angemeldet, bitte melden Sie sich auf der <a href='SW05login.php'>Login-Seite</a> an.";
-            header('Location: login.php');
-        }
-=======
   include('dbconnector.inc.php');
->>>>>>> c513a47683b06ee9b489f0c6c4a3ef5ca4e5e39b
 
   //Session wird gestartet
   session_start();
   session_regenerate_id(true);
 
-<<<<<<< HEAD
-        if($_SERVER['REQUEST_METHOD'] == "POST")
-        {
-
-            //Serverseitige Validierung Altes Passwort
-            // passwort vorhanden, mindestens 8 Zeichen
-            if(isset($_POST['oldpassword']) && !empty(trim($_POST['oldpassword'])))
-            {
-                $oldpassword = trim($_POST['oldpassword']);
-                //entspricht das passwort unseren vorgaben? (minimal 8 Zeichen, Zahlen, Buchstaben, keine Zeilenumbrüche, mindestens ein Gross- und ein Kleinbuchstabe)
-                if(!preg_match("/(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $oldpassword))
-                {
-                    $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
-                }
-            }
-
-            //Validierung Neues Passwort
-            // passwort vorhanden, mindestens 8 Zeichen
-            if(isset($_POST['new']) && !empty(trim($_POST['new'])))
-            {
-                $newpassword = trim($_POST['newpassword']);
-                //entspricht das passwort unseren vorgaben? (minimal 8 Zeichen, Zahlen, Buchstaben, keine Zeilenumbrüche, mindestens ein Gross- und ein Kleinbuchstabe)
-                if(!preg_match("/(?=^.{8,}$)((?=.*\d+)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $newpassword))
-                {
-                    $error .= "Das Passwort entspricht nicht dem geforderten Format.<br />";
-                }
-            }
-
-
-            // kein fehler
-            if(empty($error))
-            {
-                //neues Passwort wird gehasht
-                $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
-                
-                $result = mysqli_query($mysqli, "SELECT *from users WHERE userid='" . $_SESSION["userid"] . "'");
-                $row = mysqli_fetch_array($result);
-                if(password_verify($oldpassword, $row['password']))
-                {
-                    mysqli_query($mysqli, "UPDATE users set password='" . $newpassword . "' WHERE userid='" . $_SESSION["userid"] . "'");
-                    $message = "Passwort erfolgreich geändert";
-                }
-                else
-                {
-                    $error = "Das aktuelle Passwort stimmt nicht";
-                }
-            }
-        }
-=======
 
 if ($_POST) {
   $oldpassword = $_POST['oldpassword'];
@@ -117,11 +45,10 @@ if ($_POST) {
       } else {
           $error = "das Kennwort ist falsch";
       }
-  } 
+  }
 }
 
 ?>
->>>>>>> c513a47683b06ee9b489f0c6c4a3ef5ca4e5e39b
 ?>
 
 
