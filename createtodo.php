@@ -63,7 +63,7 @@
             //Fehlermeldung wird in Variabel geschrieben
             $error .= "Die eingegebenen Informationen im Feld Status entsprechen nicht dem geforderten Format.<br />";
         }
-
+        
 
 
 
