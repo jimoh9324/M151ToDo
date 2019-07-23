@@ -30,12 +30,14 @@ if ($conn->connect_error)
 $sql = "SELECT * FROM tbl_asset order by id_asset asc";
 $result = $conn->query($sql);
 
-//Schleife über jedes Asset
-while($row = $result->fetch_assoc()) 
+if(!empty($result))
 {
-    //Wenn etwas zurückgeliefert wird
-    if (!empty($row))
-    {
+
+
+
+//Schleife über jedes Asset
+while($row = $result->fetch_assoc())
+{
         //Überprüft ob der Eintrag bereits geupdated wurde
         if ($row['updated'] <> 1)
         {
@@ -90,7 +92,7 @@ while($row = $result->fetch_assoc())
                 echo "Old ID not found";
             }
         }
-    }
+}
 
     //Wenn das Resultat leer ist
     else
